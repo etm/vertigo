@@ -1,0 +1,49 @@
+.windows-panel {
+  background: #1f1f1f;
+}
+
+.windows-list {
+}
+.window-button-layout {
+}
+
+.window-button {
+  padding: 0em 0.2em;
+  margin: 0.2em 0.3em;
+  border-top: 0em hidden;
+  border-left: 0em hidden;
+  border-bottom: 0em hidden;
+  border-right: 0.2em solid rgba(204, 204, 204, 0);
+}
+
+.workspace-button {
+  text-align: left;
+}
+
+.window-button.focused {
+  padding: 0em 0.2em;
+  margin: 0.2em 0.3em;
+  border-top: 0em solid rgba(204, 204, 204, 1);
+  border-left: 0em hidden;
+  border-bottom: 0em hidden;
+  border-right: 0.2em solid rgba(204, 204, 204, 1);
+}
+
+
+.workspace-active {
+  padding: 0em 0.2em;
+  margin: 0.2em 0.3em;
+  background-color: rgba(204, 204, 204, 1);
+  color: rgba(0, 0, 0, 1);
+  border: 0.2em solid rgba(204, 204, 204, 1);
+  border-radius: 0.4em;
+}
+.workspace-inactive {
+  padding: 0em 0.2em;
+  margin: 0.2em 0.3em;
+  background-color: rgba(127, 127, 127, 1);
+  color: rgba(0, 0, 0, 1);
+  text-weight: rgba(0, 0, 0, 1);
+  border: 0.2em solid rgba(127, 127, 127, 1);
+  border-radius: 0.4em;
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Workspaces and Windows bar on the right. Works for NextStep people and workspaces to dock people which preferred fixed docks with icons.",
+  "name": "Vertical Workspace and Window Bar",
+  "shell-version": [
+    "40",
+    "41",
+    "42",
+    "43"
+  ],
+  "url": "https://github.com/etm/vertigo",
+  "uuid": "vertigo@all-the.fish",
+  "version": 9
+}
