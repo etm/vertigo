@@ -1,6 +1,6 @@
 {
-  "description": "Workspaces and Windows bar on the right. Works for NextStep people and workspaces to dock people which preferred fixed docks with icons.",
-  "name": "Vertical Workspace and Window Bar",
+  "description": "Workspaces and Windows bar on the right. Works for NextStep people and Workspaces to Dock people which preferred fixed docks with icons.",
+  "name": "Vertical Workspaces and Windows Bar",
   "shell-version": [
     "40",
     "41",

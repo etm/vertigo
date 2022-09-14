@@ -1,4 +1,4 @@
-# Vertical Workspace and Window Bar
+# Vertical Workspaces and Windows Bar
 
 - Sits on the right
 - Makes things bearable for NextStep people
