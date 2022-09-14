@@ -9,27 +9,26 @@
 
 .window-button {
   padding: 0em 0.2em;
-  margin: 0.2em 0.3em;
+  padding-left: 0.6em;
+  margin: 0.1em 0.2em;
   border-top: 0em hidden;
   border-left: 0em hidden;
   border-bottom: 0em hidden;
   border-right: 0.2em solid rgba(204, 204, 204, 0);
 }
-
-.workspace-button {
-  text-align: left;
-}
-
 .window-button.focused {
-  padding: 0em 0.2em;
-  margin: 0.2em 0.3em;
   border-top: 0em solid rgba(204, 204, 204, 1);
   border-left: 0em hidden;
   border-bottom: 0em hidden;
   border-right: 0.2em solid rgba(204, 204, 204, 1);
 }
 
-
+.workspace-button {
+  margin:0;
+  padding: 0;
+  border: 0 hidden;
+  text-align: left;
+}
 .workspace-active {
   padding: 0em 0.2em;
   margin: 0.2em 0.3em;
