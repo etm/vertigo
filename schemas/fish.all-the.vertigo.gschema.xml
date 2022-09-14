@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+	<schema id="org.gnome.shell.extensions.vertigo" path="/org/gnome/shell/extensions/vertigo/">
+		<key name="panel-opacity" type="i">
+			<default>127</default>
+			<summary>Panel opacity</summary>
+			<description></description>
+		</key>
+	</schema>
+</schemalist>

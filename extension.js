@@ -1,7 +1,7 @@
 var APPLICATION_ICON_SIZE, Clutter, EXTENSION_NAME, Extension, ExtensionUtils, GLib, GObject, Gio, Main, Meta, Shell, St, init,
   indexOf = [].indexOf;
 
-EXTENSION_NAME = 'vertical-windows-list';
+EXTENSION_NAME = 'vertigo';
 
 APPLICATION_TOP = 32;
 APPLICATION_ICON_SIZE = 20;
@@ -27,8 +27,7 @@ Main = imports.ui.main;
 
 Extension = class Extension {
   constructor() {
-    this.settings = ExtensionUtils.getSettings('org.gnome.shell.extensions.vertical-window-list');
-    this.settings.set_string('windows', '{}');
+    this.settings = ExtensionUtils.getSettings('org.gnome.shell.extensions.vertigo');
   }
 
   enable() {
