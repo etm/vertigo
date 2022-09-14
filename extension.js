@@ -44,6 +44,8 @@ Extension = class Extension {
         orientation: Clutter.Orientation.VERTICAL
       }),
       height: (this.monitor != null ? this.monitor.height - APPLICATION_TOP : void 0) || 1000,
+      x: (this.monitor != null ? this.monitor.width - (APPLICATION_ICON_SIZE + APPLICATION_WIDTH_ADD) : void 0) || 0,
+      y: APPLICATION_TOP
     });
     this.windowList = new St.Widget({
       style_class: 'windows-list',
@@ -101,9 +103,6 @@ Extension = class Extension {
       trackFullscreen: true
     });
     this.add_workspace_windows();
-    global.log('----------------------------------------------------------');
-    global.log(this.windowList.get_width());
-    this.windowPanel.set_position((this.monitor.width - (APPLICATION_ICON_SIZE + APPLICATION_WIDTH_ADD)) || 0, APPLICATION_TOP);
     return this.opacityChanged();
   }
 
