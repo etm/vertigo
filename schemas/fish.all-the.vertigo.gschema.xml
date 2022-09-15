@@ -2,7 +2,7 @@
 <schemalist>
 	<schema id="org.gnome.shell.extensions.vertigo" path="/org/gnome/shell/extensions/vertigo/">
 		<key name="panel-opacity" type="i">
-			<default>127</default>
+			<default>255</default>
 			<summary>Panel opacity</summary>
 			<description></description>
 		</key>

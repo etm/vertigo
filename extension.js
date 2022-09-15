@@ -38,7 +38,7 @@ Extension = class Extension {
     this.windowPanel = new St.Widget({
       style_class: 'windows-panel',
       reactive: true,
-      track_hover: true,
+      track_hover: false,
       visible: true,
       layout_manager: new Clutter.BoxLayout({
         orientation: Clutter.Orientation.VERTICAL
@@ -197,6 +197,7 @@ Extension = class Extension {
     button = new St.Widget({
       style_class: 'window-button',
       can_focus: true,
+      track_hover: true,
       x_expand: true,
       x_align: Clutter.ActorAlign.FILL,
       reactive: true,
