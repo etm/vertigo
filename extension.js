@@ -8,21 +8,13 @@ APPLICATION_ICON_SIZE = 20;
 APPLICATION_WIDTH_ADD = 21;
 
 GObject = imports.gi.GObject;
-
 St = imports.gi.St;
-
 Gio = imports.gi.Gio;
-
 GLib = imports.gi.GLib;
-
 Meta = imports.gi.Meta;
-
 Clutter = imports.gi.Clutter;
-
 Shell = imports.gi.Shell;
-
 ExtensionUtils = imports.misc.extensionUtils;
-
 Main = imports.ui.main;
 
 Extension = class Extension {
@@ -58,7 +50,6 @@ Extension = class Extension {
       x_expand: false,
       y_expand: true
     });
-    // non-transparent text and icons
     this.windowList.set_opacity_override(255);
     this.windowTracker = Shell.WindowTracker.get_default();
     (() => {
@@ -106,42 +97,24 @@ Extension = class Extension {
     return this.opacityChanged();
   }
 
-  sort_windows(w1, w2) {
-  	return w1.get_id() - w2.get_id();
-  }
-
   add_workspace_windows() {
-    var button, i, j, k, len, len1, len2, metaWindow, ref, ref1, w, windowPresent, windowSaved, windowsPresent, workspace, workspaces, active_workspace, ret;
-    workspaces = global.workspace_manager.get_n_workspaces()
-    active_workspace = global.workspace_manager.get_active_workspace_index();
-    workspace = global.workspace_manager.get_active_workspace();
-    ref = this.windowList.get_children();
-    for (i = 0, len = ref.length; i < len; i++) {
-      button = ref[i];
-      button.destroy();
-    }
-    for (let ws_index = 0; ws_index < workspaces; ++ws_index) {
-      workspace = global.workspace_manager.get_workspace_by_index(ws_index);
+    this.windowList.get_children().forEach(w => w.destroy())
+
+    let active_workspace = global.workspace_manager.get_active_workspace_index()
+    for (let ws_index = 0; ws_index < global.workspace_manager.get_n_workspaces(); ++ws_index) {
+      let workspace = global.workspace_manager.get_workspace_by_index(ws_index);
       this.add_workspace(workspace,ws_index == active_workspace,ws_index);
-      windowsPresent = [];
-      ref1 = global.display.get_tab_list(Meta.TabList.NORMAL, workspace);
-      for (j = 0, len1 = ref1.length; j < len1; j++) {
-        metaWindow = ref1[j];
-        windowPresent = {
+      let windows = global.display.get_tab_list(Meta.TabList.NORMAL, workspace).map(metaWindow => {
+        return {
           order: metaWindow.get_stable_sequence(),
           metaWindow: metaWindow
-        };
-        windowsPresent.push(windowPresent);
-      }
-      windowsPresent.sort(function(a, b) {
+        }
+      })
+      windows.sort((a, b) => {
         return 0 + (a.order >= b.order) - (a.order <= b.order);
-      });
-      for (k = 0, len2 = windowsPresent.length; k < len2; k++) {
-        w = windowsPresent[k];
-        this.add_window(workspace, w.metaWindow, ws_index);
-      }
+      })
+      windows.forEach(w => this.add_window(workspace, w.metaWindow, ws_index))
     }
-    return;
   }
 
   showSettings() {
@@ -153,8 +126,7 @@ Extension = class Extension {
   }
 
   add_workspace(workspace, active, ws_index) {
-    var box;
-    box = new St.Bin({
+    let box = new St.Bin({
       style_class: 'workspace-button',
       can_focus: true,
       x_expand: true,
@@ -164,28 +136,25 @@ Extension = class Extension {
       layout_manager: new Clutter.BoxLayout({
         orientation: Clutter.Orientation.HORIZONTAL
       })
-    });
-    box.wsIndex = ws_index;
+    })
+    box.wsIndex = ws_index
 
-
-    var label = new St.Label({x_expand: true, x_align: Clutter.ActorAlign.FILL});
-
+    let label = new St.Label({x_expand: true, x_align: Clutter.ActorAlign.FILL})
     if (active) {
-      label.style_class = 'workspace-active';
+      label.style_class = 'workspace-active'
     } else {
-      label.style_class = 'workspace-inactive';
+      label.style_class = 'workspace-inactive'
     }
-    label.set_text((ws_index + 1).toString());
-    box.set_child(label);
-    this.windowList.add_child(box);
+    label.set_text((ws_index + 1).toString())
+    box.set_child(label)
+    this.windowList.add_child(box)
 
-    (() => {
-      var signal;
-      signal = box.connect('button-release-event', this.buttonClicked.bind(this));
-      return box.connect('destroy', () => {
-        return box.disconnect(signal);
-      });
-    })();
+    ;(() => {
+      let signal = box.connect('button-release-event', this.buttonClicked.bind(this));
+      box.connect('destroy', () => {
+        box.disconnect(signal)
+      })
+    })()
   }
 
   add_window(workspace, metaWindow, ws_index) {
