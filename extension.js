@@ -13,16 +13,12 @@ var Shell = imports.gi.Shell
 var ExtensionUtils = imports.misc.extensionUtils
 var Main = imports.ui.main
 
-var  indexOf = [].indexOf
-
 Extension = class Extension {
   constructor() {
     this.settings = ExtensionUtils.getSettings('org.gnome.shell.extensions.vertigo')
   }
 
   enable() {
-    this.me = ExtensionUtils.getCurrentExtension()
-    this.meta = this.me.metadata
     this.appSystem = Shell.AppSystem.get_default()
     this.monitor = Main.layoutManager.primaryMonitor
     this.windowPanel = new St.Widget({
@@ -152,7 +148,7 @@ Extension = class Extension {
   }
 
   add_window(workspace, metaWindow, ws_index) {
-    if (indexOf.call(global.display.get_tab_list(Meta.TabList.NORMAL, workspace), metaWindow) < 0) {
+    if ([].indexOf.call(global.display.get_tab_list(Meta.TabList.NORMAL, workspace), metaWindow) < 0) {
       return
     }
     let button = new St.Widget({
