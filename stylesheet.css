@@ -10,7 +10,7 @@
 .window-button {
   padding: 0em 0.2em;
   padding-left: 0.6em;
-  margin: 0.1em 0.2em;
+  margin: 0em 0.2em;
   border-top: 0em hidden;
   border-left: 0em hidden;
   border-bottom: 0em hidden;
@@ -31,7 +31,7 @@
 }
 .workspace-active {
   padding: 0em 0.2em;
-  margin: 0.2em 0.3em;
+  margin: 0.1em 0.3em;
   background-color: rgba(204, 204, 204, 1);
   color: rgba(0, 0, 0, 1);
   border: 0.2em solid rgba(204, 204, 204, 1);
@@ -39,7 +39,7 @@
 }
 .workspace-inactive {
   padding: 0em 0.2em;
-  margin: 0.2em 0.3em;
+  margin: 0.1em 0.3em;
   background-color: rgba(127, 127, 127, 1);
   color: rgba(0, 0, 0, 1);
   text-weight: rgba(0, 0, 0, 1);
