@@ -67,8 +67,8 @@ Extension = class Extension {
     })()
     ;(() => {
       let signal = Main.layoutManager.connect('monitors-changed', () => {
-        this.windowPanel.set_position((this.monitor != null ? this.monitor.x : void 0) || 0, APPLICATION_TOP)
-        this.windowPanel.set_height((this.monitor != null ? this.monitor.height : void 0) || 1000)
+        this.windowPanel.set_position((this.monitor != null ?  this.monitor.width - (APPLICATION_ICON_SIZE + APPLICATION_WIDTH_ADD): void 0) || 0, APPLICATION_TOP)
+        this.windowPanel.set_height((this.monitor != null ? this.monitor.height - APPLICATION_TOP : void 0) || 1000)
         Main.layoutManager.removeChrome(this.windowPanel)
         return Main.layoutManager.addChrome(this.windowPanel, {
           affectsStruts: true,
@@ -88,6 +88,8 @@ Extension = class Extension {
   }
 
   add_workspace_windows() {
+    this.windowPanel.set_position((this.monitor != null ?  this.monitor.width - (APPLICATION_ICON_SIZE + APPLICATION_WIDTH_ADD): void 0) || 0, APPLICATION_TOP)
+    this.windowPanel.set_height((this.monitor != null ? this.monitor.height - APPLICATION_TOP : void 0) || 1000)
     this.windowList.get_children().forEach(w => w.destroy())
 
     let active_workspace = global.workspace_manager.get_active_workspace_index()
